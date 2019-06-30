@@ -5,5 +5,5 @@ const array = ['a', 'b', 'c', 'd', 'e'];
 
 
 array.forEach(item => {
-  ul.innerHTML += `<li class="${style.red}">${item}</li>`;
+  ul.innerHTML += `<li class="${style.colorRed}">${item}</li>`;
 });
