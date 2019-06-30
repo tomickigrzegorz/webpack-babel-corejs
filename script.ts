@@ -12,6 +12,7 @@ interface Person {
 }
 
 function greeter(person: Person) {
+  console.log(person.firstName)
   return "Hello, " + person.firstName + " " + person.lastName;
 }
 
