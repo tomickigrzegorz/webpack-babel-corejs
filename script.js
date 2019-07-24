@@ -1,9 +1,7 @@
-import style from './style.css';
+import './autosuggest';
 
-const ul = document.querySelector('.list');
-const array = ['a', 'b', 'c', 'd', 'e'];
-
-
-array.forEach(item => {
-  ul.innerHTML += `<li class="${style.colorRed}">${item}</li>`;
+new searchJson({
+  search: 'search-second',
+  urlPath: 'http://localhost:3004/country?like=',
+  searchBy: 'name',
 });
