@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "prod": "webpack --config webpack.config.js --mode production"
+    "prod": "webpack --config webpack.config.js --mode production",
+    "dev": "webpack --config webpack.config.js --mode development"
   },
   "dependencies": {
     "@babel/core": "^7.4.5",
