@@ -1,14 +1,14 @@
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
-  const ga = argv.mode === 'production' ? './index-google.html' : 'index.html';
   return {
     entry: {
-      script: './script.js'
+      script: './sources/script.js'
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, './dist'),
       filename: './script.js'
     },
     module: {
@@ -19,15 +19,52 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader'
           }
-        }
+        },
+        {
+          test: /\.(css|sass|scss)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                sourceMap: true
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                config: {
+                  path: './config/',
+                },
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
+            {
+              loader: 'file-loader',
+            }
+          ]
+        },
       ]
     },
     plugins: [
-      new HtmlWebPackPlugin({
-        template: ga,
-        filename: ga,
-        inject: true
-      })
+      new CleanWebpackPlugin({
+        verbose: true
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css',
+      }),
     ]
   }
 }

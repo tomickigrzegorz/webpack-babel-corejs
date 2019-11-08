@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Lato-Light';
+  src: url('b64---./fonts/Lato-Light.ttf---') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  position: relative;
+  font-weight: 400;
+  font-style: normal;
+  min-height: 100%;
+  color: #000;
+  background-color: #F5F5F5;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
