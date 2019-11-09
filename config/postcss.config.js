@@ -1,7 +1,5 @@
 module.exports = {
   plugins: {
-    'postcss-inline-base64': {
-      baseDir: './sources/'
-    },
+    'postcss-font-base64':{},
   },
 };
