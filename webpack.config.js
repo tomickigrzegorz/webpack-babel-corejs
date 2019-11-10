@@ -1,15 +1,19 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
   return {
+    devtool: argv.mode === 'production' ? 'none' : 'source-map',
+    mode: argv.mode === 'production' ? 'production' : 'development',
     entry: {
-      script: './sources/script.js'
+      MYSCRIPT: './sources/script.js'
     },
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: './script.js'
+      filename: './[name].js',
+      library: '[name]',
+      libraryTarget: 'var',
     },
     module: {
       rules: [
@@ -20,51 +24,16 @@ module.exports = (env, argv) => {
             loader: 'babel-loader'
           }
         },
-        {
-          test: /\.(css|sass|scss)$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                sourceMap: true
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-                config: {
-                  path: './config/',
-                },
-              },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-          use: [
-            {
-              loader: 'file-loader',
-            }
-          ]
-        },
       ]
     },
     plugins: [
       new CleanWebpackPlugin({
         verbose: true
       }),
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].css',
-      }),
+      new HtmlWebPackPlugin({
+        filename: 'index.html',
+        template: './sources/index.html'
+      })
     ]
   }
 }
