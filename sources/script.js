@@ -1,3 +1,3 @@
-export function test(type) {
-  alert(type);
-}
+import './scss/style.scss';
+
+console.log('color red');

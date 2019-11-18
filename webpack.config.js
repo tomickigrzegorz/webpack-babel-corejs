@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
@@ -7,13 +8,11 @@ module.exports = (env, argv) => {
     devtool: argv.mode === 'production' ? 'none' : 'source-map',
     mode: argv.mode === 'production' ? 'production' : 'development',
     entry: {
-      MYSCRIPT: './sources/script.js'
+      script: './sources/script.js'
     },
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: './[name].js',
-      library: '[name]',
-      libraryTarget: 'var',
+      filename: './[name].js'
     },
     module: {
       rules: [
@@ -24,11 +23,47 @@ module.exports = (env, argv) => {
             loader: 'babel-loader'
           }
         },
+        {
+          test: /\.(css|sass|scss)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'style-resources-loader',
+              options: {
+                patterns: [
+                  path.resolve(__dirname, './sources/scss/_variable.scss')
+                ],
+              },
+            },
+          ],
+        }
       ]
     },
     plugins: [
       new CleanWebpackPlugin({
         verbose: true
+      }),
+      new MiniCssExtractPlugin({
+        filename: './[name].css',
       }),
       new HtmlWebPackPlugin({
         filename: 'index.html',
