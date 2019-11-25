@@ -8,15 +8,14 @@
     "dev": "webpack-dev-server --config webpack.config.js --mode development --open"
   },
   "dependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
     "babel-loader": "^8.0.6",
-    "core-js": "3.1.4",
-    "html-webpack-plugin": "^4.0.0-beta.5",
-    "webpack": "^4.35.0",
-    "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-cli": "^3.3.5",
-    "webpack-dev-server": "^3.8.0"
+    "core-js": "3.4.2",
+    "html-webpack-plugin": "^4.0.0-beta.8",
+    "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
