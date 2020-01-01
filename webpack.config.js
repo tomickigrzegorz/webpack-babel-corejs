@@ -63,7 +63,7 @@ module.exports = (env, argv) => {
         verbose: true
       }),
       new MiniCssExtractPlugin({
-        filename: './[name].css',
+        filename: './style.css',
       }),
       new HtmlWebPackPlugin({
         filename: 'index.html',
