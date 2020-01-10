@@ -59,6 +59,14 @@ module.exports = (env, argv) => {
               },
             },
           ],
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+            outputPath: './images/'
+          },
         }
       ]
     },
