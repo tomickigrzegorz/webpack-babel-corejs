@@ -8,6 +8,7 @@ const prodPlugin = (plugin, argv) => {
 }
 
 module.exports = (env, argv) => {
+  const imageModeFileLoader = argv.mode === 'production' ? './images/' : ''
   return {
     devtool: argv.mode === 'production' ? 'none' : 'source-map',
     mode: argv.mode === 'production' ? 'production' : 'development',
@@ -65,7 +66,11 @@ module.exports = (env, argv) => {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]',
-            outputPath: './images/'
+            outputPath: (url, resourcePath, context) => {
+              if(/sources/.test(url)) {
+                return url.replace('sources', '.')
+              }
+            },
           },
         }
       ]
