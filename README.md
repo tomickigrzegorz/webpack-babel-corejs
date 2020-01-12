@@ -15,6 +15,6 @@ These are branches that show the use of plugins, configurations etc. using the w
 - postcss-inline-base64 [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/postcss-inline-base64) | [How to inline fonts in CSS with webpack?
 ](https://stackoverflow.com/a/58768300/10424385)
 - style-resources-loader [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/style-resources-loader) | [How to configure Webpack with link tag in HtmlWebpackPlugin template file?](https://stackoverflow.com/q/59555081/10424385)
-- awesome-typescript-loader
-- ts-source-map
-- typescript
+- awesome-typescript-loader [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/awesome-typescript-loader)
+- ts-source-map [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/ts-source-map)
+- typescript [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/typescript)
