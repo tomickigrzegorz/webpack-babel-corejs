@@ -18,3 +18,5 @@ These are branches that show the use of plugins, configurations etc. using the w
 - awesome-typescript-loader [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/awesome-typescript-loader)
 - ts-source-map [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/ts-source-map)
 - typescript [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/typescript)
+- jquery [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/jquery) | [webpack - ReferenceError: $ is not defined
+](https://stackoverflow.com/a/60552025/10424385)
