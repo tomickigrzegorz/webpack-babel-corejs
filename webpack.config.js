@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -8,6 +9,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './script.js'
+  },
+  externals: {
+    jquery: 'jQuery'
   },
   module: {rules: [
     {
@@ -23,6 +27,11 @@ module.exports = {
       template: './index.html',
       filename: 'index.html',
       inject: false
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ]
 };

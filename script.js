@@ -1,7 +1,3 @@
-const ul = document.querySelector('.list');
-const array = ['a', 'b', 'c', 'd', 'e'];
+import $ from 'jquery';
 
-array.forEach(item => {
-  console.log(item);
-  ul.innerHTML += `<li>${item}</li>`;
-});
+$('.list').html('<h1>TEST</h1>');
