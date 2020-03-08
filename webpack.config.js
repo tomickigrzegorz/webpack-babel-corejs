@@ -1,37 +1,24 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
+const ENTRY = {
+  actions: './src/actions/index.js',
+  options: './src/options/index.js'
+}
+
+const entryHtmlPlugins = Object.keys(ENTRY).map(entryName => {
+  return new HtmlWebPackPlugin({
+    template: `./src/${entryName}/index.html`,
+    filename: `${entryName}/index.html`,
+    chunks: [entryName]
+  });
+});
+
 module.exports = {
-  entry: {
-    script: './script.js'
-  },
+  entry: ENTRY,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: './script.js'
+    filename: '[name]/index.js'
   },
-  externals: {
-    jquery: 'jQuery'
-  },
-  module: {rules: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader'
-      }
-    }
-  ]},
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './index.html',
-      filename: 'index.html',
-      inject: false
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
-    })
-  ]
+  plugins: entryHtmlPlugins
 };
