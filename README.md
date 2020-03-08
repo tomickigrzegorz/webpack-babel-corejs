@@ -20,3 +20,4 @@ These are branches that show the use of plugins, configurations etc. using the w
 - typescript [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/typescript)
 - jquery [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/jquery) | [webpack - ReferenceError: $ is not defined
 ](https://stackoverflow.com/a/60552025/10424385)
+- multi output files [[branch]](https://github.com/tomik23/webpack-babel-corejs/tree/many-outputs) | [How to create multi output files?](https://stackoverflow.com/questions/60589413/how-to-create-multi-output-files)
